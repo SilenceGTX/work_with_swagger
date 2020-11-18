@@ -12,7 +12,6 @@ exports.healthCheck = (req, res) => {
 };
 
 exports.setAge = (req, res) => {
-    console.log(req)
     var age = req.query.number
     res.status(200).send(`来骗，来偷袭，我${age}岁的老同志`)
 };
