@@ -20,12 +20,12 @@ paths:
         404:
           description: Not found
 
-  /age/{number}:
+  /age:
     get:
       summary: Set the age of the user
       parameters:
       - name: number
-        in: path
+        in: query
         description: The age of the user
         required: true
         schema:
