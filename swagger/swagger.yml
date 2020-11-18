@@ -1,0 +1,69 @@
+openapi: 3.0.0
+info:
+  title: Work with Swagger
+  description: This is just an experiment
+  version: v1.0
+
+servers:
+- url: http://localhost:5000
+
+paths:
+  /:
+    get:
+      summary: Health check endpoint
+      operationId: healthCheck
+      responses:
+        200:
+          description: Successful operation
+        400:
+          description: Bad request
+        404:
+          description: Not found
+
+  /age/{number}:
+    get:
+      summary: Set the age of the user
+      parameters:
+      - name: number
+        in: path
+        description: The age of the user
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Successful operation
+        400:
+          description: Bad request
+        404:
+          description: Not found
+
+  /tricks:
+    post:
+      summary: Hit by some tricks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/tricks'
+      responses:
+        200:
+          description: Successful operation
+        400:
+          description: Bad request
+        404:
+          description: Not found
+
+components:
+  schemas:
+    tricks:
+      type: object
+      required:
+      - tricks
+      - comment
+      properties:
+        tricks:
+          type: array
+        comment:
+          type: string
